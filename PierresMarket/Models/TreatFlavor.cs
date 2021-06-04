@@ -1,11 +1,11 @@
-namespace ToDoList.Models
+namespace PierresMarket.Models
 {
-  public class CategoryItem
+  public class TreatFlavor
     {       
-        public int CategoryItemId { get; set; }
-        public int ItemId { get; set; }
-        public int CategoryId { get; set; }
-        public virtual Item Item { get; set; }
-        public virtual Category Category { get; set; }
+        public int TreatFlavorId { get; set; }
+        public int FlavorId { get; set; }
+        public int TreatId { get; set; }
+        public virtual Flavor Flavor { get; set; }
+        public virtual Treat Treat { get; set; }
     }
 }

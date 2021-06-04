@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 
-namespace ToDoList.Models
+namespace PierresMarket.Models
 {
-  public class Category
+  public class Treat
     {
-        public Category()
+        public Treat()
         {
-            this.JoinEntities = new HashSet<CategoryItem>();
+            this.JoinEntities = new HashSet<TreatFlavor>();
         }
 
-        public int CategoryId { get; set; }
+        public int TreatId { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<CategoryItem> JoinEntities { get; set; }
+        public virtual ICollection<TreatFlavor> JoinEntities { get; set; }
     }
 }

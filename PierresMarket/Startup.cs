@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ToDoList.Models;
-//new code
+using PierresMarket.Models;
+
 using Microsoft.AspNetCore.Identity;
 
-namespace ToDoList
+namespace PierresMarket
 {
   public class Startup
   {
@@ -27,12 +27,12 @@ namespace ToDoList
       services.AddMvc();
 
       services.AddEntityFrameworkMySql()
-        .AddDbContext<ToDoListContext>(options => options
+        .AddDbContext<PierresMarketContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
 
-      //new code
+      
       services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ToDoListContext>()
+                .AddEntityFrameworkStores<PierresMarketContext>()
                 .AddDefaultTokenProviders();
       
       services.Configure<IdentityOptions>(options =>
@@ -50,12 +50,12 @@ namespace ToDoList
     {
       app.UseDeveloperExceptionPage();
 
-      //new code
+      
       app.UseAuthentication(); 
 
       app.UseRouting();
 
-      //new code
+      
       app.UseAuthorization();
 
       app.UseEndpoints(routes =>
