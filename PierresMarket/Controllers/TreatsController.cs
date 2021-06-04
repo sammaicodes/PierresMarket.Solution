@@ -31,11 +31,11 @@ namespace PierresMarket.Controllers
       return View(userTreats);
     }
 
-    // public ActionResult Create()
-    // {
-    //   ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
-    //   return View();
-    // }
+    public ActionResult Create()
+    {
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
+      return View();
+    }
 
     // [HttpPost]
     // public async Task<ActionResult> Create(Flavor flavor, int TreatId)

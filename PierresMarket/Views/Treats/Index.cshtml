@@ -1,1 +1,26 @@
-<H1>All About Treats</H1>
+@{
+  Layout = "_Layout";
+}
+
+@using PierresMarket.Models;
+@model IEnumerable<PierresMarket.Models.Treat>
+
+<h1>Treats for @User.Identity.Name</h1>
+
+@if (Model.Any())
+{
+  <ul>
+    @foreach (Treat treat in Model)
+    {
+      <li>@Html.ActionLink($"{treat.TreatName}", "Details", new { id = treat.TreatId })</li>
+    }
+  </ul>
+} 
+else
+{
+  <h3>No treats have been added yet!</h3>
+}
+
+<p>@Html.ActionLink("Add new treat", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
