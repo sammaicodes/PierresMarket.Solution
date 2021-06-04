@@ -9,7 +9,7 @@ using PierresMarket.Models;
 namespace PierresMarket.Migrations
 {
     [DbContext(typeof(PierresMarketContext))]
-    [Migration("20210604195216_Initial")]
+    [Migration("20210604205407_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
