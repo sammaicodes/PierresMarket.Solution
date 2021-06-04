@@ -33,67 +33,67 @@ namespace PierresMarket.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
+      // ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
       return View();
     }
 
-    // [HttpPost]
-    // public async Task<ActionResult> Create(Flavor flavor, int TreatId)
-    // {
-    //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    //   var currentUser = await _userManager.FindByIdAsync(userId);
-    //   flavor.User = currentUser;
-    //   _db.Treats.Add(flavor);
-    //   _db.SaveChanges();
-    //   if (TreatId != 0)
-    //   {
-    //       _db.TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
-    //   }
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public async Task<ActionResult> Create(Treat treat, int FlavorId)
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      treat.User = currentUser;
+      _db.Treats.Add(treat);
+      _db.SaveChanges();
+      if (FlavorId != 0)
+      {
+          _db.TreatFlavor.Add(new TreatFlavor() { FlavorId = FlavorId, TreatId = treat.TreatId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
     // [AllowAnonymous]
     // public ActionResult Details(int id)
     // {
-    //   var thisFlavor = _db.Treats
-    //       .Include(flavor => flavor.JoinEntities)
+    //   var thisTreat = _db.Treats
+    //       .Include(treat => treat.JoinEntities)
     //       .ThenInclude(join => join.Treat)
-    //       .FirstOrDefault(flavor => flavor.FlavorId == id);
-    //   return View(thisFlavor);
+    //       .FirstOrDefault(treat => treat.TreatId == id);
+    //   return View(thisTreat);
     // }
 
     // public ActionResult Edit(int id)
     // {
-    //   var thisFlavor = _db.Treats.FirstOrDefault(flavor => flavor.FlavorId == id);
+    //   var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
     //   ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
-    //   return View(thisFlavor);
+    //   return View(thisTreat);
     // }
 
     // [HttpPost]
-    // public ActionResult Edit(Flavor flavor, int TreatId)
+    // public ActionResult Edit(Treat treat, int TreatId)
     // {
     //   if (TreatId != 0)
     //   {
-    //     _db.TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
+    //     _db.TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, TreatId = treat.TreatId });
     //   }
-    //   _db.Entry(flavor).State = EntityState.Modified;
+    //   _db.Entry(treat).State = EntityState.Modified;
     //   _db.SaveChanges();
     //   return RedirectToAction("Index");
     // }
 
     // public ActionResult AddTreat(int id)
     // {
-    //   var thisFlavor = _db.Treats.FirstOrDefault(flavor => flavor.FlavorId == id);
+    //   var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
     //   ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
-    //   return View(thisFlavor);
+    //   return View(thisTreat);
     // }
 
     // [HttpPost]
-    // public ActionResult AddTreat(Flavor flavor, int TreatId)
+    // public ActionResult AddTreat(Treat treat, int TreatId)
     // {
     //   if (TreatId != 0)
     //   {
-    //   _db.TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
+    //   _db.TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, TreatId = treat.TreatId });
     //   }
     //   _db.SaveChanges();
     //   return RedirectToAction("Index");
@@ -101,15 +101,15 @@ namespace PierresMarket.Controllers
 
     // public ActionResult Delete(int id)
     // {
-    //   var thisFlavor = _db.Treats.FirstOrDefault(flavor => flavor.FlavorId == id);
-    //   return View(thisFlavor);
+    //   var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+    //   return View(thisTreat);
     // }
 
     // [HttpPost, ActionName("Delete")]
     // public ActionResult DeleteConfirmed(int id)
     // {
-    //   var thisFlavor = _db.Treats.FirstOrDefault(flavor => flavor.FlavorId == id);
-    //   _db.Treats.Remove(thisFlavor);
+    //   var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+    //   _db.Treats.Remove(thisTreat);
     //   _db.SaveChanges();
     //   return RedirectToAction("Index");
     // }
