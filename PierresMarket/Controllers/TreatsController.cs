@@ -12,17 +12,17 @@ using System.Security.Claims;
 namespace PierresMarket.Controllers
 {
   [Authorize]
-  public class FlavorsController : Controller
+  public class TreatsController : Controller
   {
     private readonly PierresMarketContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public FlavorsController(UserManager<ApplicationUser> userManager, PierresMarketContext db)
+    public TreatsController(UserManager<ApplicationUser> userManager, PierresMarketContext db)
     {
       _userManager = userManager;
       _db = db;
     }
-    // [AllowAnonymous]
+    [AllowAnonymous]
     public async Task<ActionResult> Index()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -43,7 +43,7 @@ namespace PierresMarket.Controllers
     //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
     //   var currentUser = await _userManager.FindByIdAsync(userId);
     //   flavor.User = currentUser;
-    //   _db.Flavors.Add(flavor);
+    //   _db.Treats.Add(flavor);
     //   _db.SaveChanges();
     //   if (TreatId != 0)
     //   {
@@ -55,7 +55,7 @@ namespace PierresMarket.Controllers
     // [AllowAnonymous]
     // public ActionResult Details(int id)
     // {
-    //   var thisFlavor = _db.Flavors
+    //   var thisFlavor = _db.Treats
     //       .Include(flavor => flavor.JoinEntities)
     //       .ThenInclude(join => join.Treat)
     //       .FirstOrDefault(flavor => flavor.FlavorId == id);
@@ -64,7 +64,7 @@ namespace PierresMarket.Controllers
 
     // public ActionResult Edit(int id)
     // {
-    //   var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+    //   var thisFlavor = _db.Treats.FirstOrDefault(flavor => flavor.FlavorId == id);
     //   ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
     //   return View(thisFlavor);
     // }
@@ -83,7 +83,7 @@ namespace PierresMarket.Controllers
 
     // public ActionResult AddTreat(int id)
     // {
-    //   var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+    //   var thisFlavor = _db.Treats.FirstOrDefault(flavor => flavor.FlavorId == id);
     //   ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
     //   return View(thisFlavor);
     // }
@@ -101,15 +101,15 @@ namespace PierresMarket.Controllers
 
     // public ActionResult Delete(int id)
     // {
-    //   var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+    //   var thisFlavor = _db.Treats.FirstOrDefault(flavor => flavor.FlavorId == id);
     //   return View(thisFlavor);
     // }
 
     // [HttpPost, ActionName("Delete")]
     // public ActionResult DeleteConfirmed(int id)
     // {
-    //   var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
-    //   _db.Flavors.Remove(thisFlavor);
+    //   var thisFlavor = _db.Treats.FirstOrDefault(flavor => flavor.FlavorId == id);
+    //   _db.Treats.Remove(thisFlavor);
     //   _db.SaveChanges();
     //   return RedirectToAction("Index");
     // }
