@@ -1,8 +1,8 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
-@using ToDoList.ViewModels
+@using PierresMarket.ViewModels
 
 @model RegisterViewModel
 
@@ -10,8 +10,8 @@
 <hr />
 @using (Html.BeginForm("Register", "Account", FormMethod.Post))
 {
-    @Html.LabelFor(user => user.Email)
-    @Html.TextBoxFor(user=> user.Email)
+    @Html.LabelFor(user => user.UserName)
+    @Html.TextBoxFor(user=> user.UserName)
 
     @Html.LabelFor(user=> user.Password)
     @Html.PasswordFor(user=> user.Password)
@@ -22,4 +22,4 @@
     <input type="submit" value="Register" />
 }
 
-Note that Identity's default setting for a password is at least six characters, a capital letter, a digit, and a special character. *@
+Note that Identity's default setting for a password is at least six characters, a capital letter, a digit, and a special character.
