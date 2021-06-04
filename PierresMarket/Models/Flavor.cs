@@ -10,7 +10,7 @@ namespace PierresMarket.Models
         }
 
         public int FlavorId { get; set; }
-        public string Description { get; set; }
+        public string FlavorType { get; set; }
         public virtual ApplicationUser User { get; set; }
 
         public virtual ICollection<TreatFlavor> JoinEntities { get;}
