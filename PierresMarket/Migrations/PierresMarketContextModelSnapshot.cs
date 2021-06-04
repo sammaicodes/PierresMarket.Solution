@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PierresMarket.Models;
 
-namespace ToDoList.Migrations
+namespace PierresMarket.Migrations
 {
     [DbContext(typeof(PierresMarketContext))]
     partial class PierresMarketContextModelSnapshot : ModelSnapshot

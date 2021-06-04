@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PierresMarket.Models;
 
-namespace ToDoList.Migrations
+namespace PierresMarket.Migrations
 {
     [DbContext(typeof(PierresMarketContext))]
-    [Migration("20210604170910_Initial")]
+    [Migration("20210604195216_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

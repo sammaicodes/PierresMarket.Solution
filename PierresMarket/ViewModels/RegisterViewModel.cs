@@ -6,8 +6,8 @@ namespace PierresMarket.ViewModels
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

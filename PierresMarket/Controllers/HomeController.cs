@@ -7,7 +7,7 @@ using System.Linq;
 
 using PierresMarket.Models;
 
-namespace ToDoList.Controllers
+namespace PierresMarket.Controllers
 {
     public class HomeController : Controller
     {
