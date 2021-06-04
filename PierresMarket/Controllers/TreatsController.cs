@@ -22,7 +22,7 @@ namespace PierresMarket.Controllers
       _userManager = userManager;
       _db = db;
     }
-    [AllowAnonymous]
+    // [AllowAnonymous]
     public async Task<ActionResult> Index()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
