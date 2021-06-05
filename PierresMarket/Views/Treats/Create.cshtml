@@ -7,7 +7,7 @@
 <h4>Add a new Treat</h4>
 @using (Html.BeginForm())
 {
-  <p>Treat Name: @Html.TextBoxFor(model => model.TreatName)</p>
+  <p>Treat Name: @Html.TextBoxFor(model => model.TreatName, new {@class = "form-control", type="text", required="text"})</p>
   
   <input type="submit" value="Add new treat" />
 }

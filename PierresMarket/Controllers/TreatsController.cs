@@ -25,10 +25,20 @@ namespace PierresMarket.Controllers
     [AllowAnonymous]
     public async Task<ActionResult> Index()
     {
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var currentUser = await _userManager.FindByIdAsync(userId);
-      var userTreats = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).ToList();
-      return View(userTreats);
+      {
+        var allTreats = _db.Treats;
+        var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId != null) {
+          var currentUser = await _userManager.FindByIdAsync(userId);
+          var userTreats = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).ToList();
+          return View(userTreats);
+        }
+        else { return View(allTreats); }
+      }
+      // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      // var currentUser = await _userManager.FindByIdAsync(userId);
+      // var userTreats = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).ToList();
+      // return View(userTreats);
     }
 
     public ActionResult Create()
@@ -99,28 +109,28 @@ namespace PierresMarket.Controllers
       return RedirectToAction("Index");
     }
 
-    // public ActionResult Delete(int id)
-    // {
-    //   var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-    //   return View(thisTreat);
-    // }
+    public ActionResult Delete(int id)
+    {
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      return View(thisTreat);
+    }
 
-    // [HttpPost, ActionName("Delete")]
-    // public ActionResult DeleteConfirmed(int id)
-    // {
-    //   var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-    //   _db.Treats.Remove(thisTreat);
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      _db.Treats.Remove(thisTreat);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
-    // [HttpPost]
-    // public ActionResult DeleteTreat(int joinId)
-    // {
-    //   var joinEntry = _db.TreatFlavor.FirstOrDefault(entry => entry.TreatFlavorId == joinId);
-    //   _db.TreatFlavor.Remove(joinEntry);
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public ActionResult DeleteFlavor(int joinId)
+    {
+      var joinEntry = _db.TreatFlavor.FirstOrDefault(entry => entry.TreatFlavorId == joinId);
+      _db.TreatFlavor.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

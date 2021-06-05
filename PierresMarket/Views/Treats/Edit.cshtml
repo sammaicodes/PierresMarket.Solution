@@ -1,20 +1,15 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
-@model ToDoList.Models.Category
+@model PierresMarket.Models.Treat
 
-<h2>Edit</h2>
-
-<h4>Edit this category: @Html.DisplayFor(model => model.Name)</h4>
-
+<h4>Edit @Html.DisplayFor(model => model.TreatName)</h4>
 @using (Html.BeginForm())
 {
-  @Html.HiddenFor(model => model.CategoryId)
-
-  @Html.LabelFor(model => model.Name)
-  @Html.EditorFor(model => model.Name)
-
-  <input type="submit" value="Save" />
+  @Html.HiddenFor(model => model.TreatId)
+  <p>Treat Name: @Html.TextBoxFor(model => model.TreatName, new {@class = "form-control", type="text", required="text"})</p>
+  
+  <input type="submit" value="Edit @Html.DisplayFor(model => model.TreatName) Now!" />
 }
-<p>@Html.ActionLink("Back to list", "Index")</p> *@
+<p>@Html.ActionLink("Show all treats", "Index")</p>
