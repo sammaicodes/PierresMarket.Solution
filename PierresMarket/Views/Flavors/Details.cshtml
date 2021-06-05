@@ -10,15 +10,15 @@
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This flavor is not associated with any treat</p>
+  <p>This flavor is not associated with any treats</p>
 }
 else
 {
-  <h4>Flavors associated with treats:</h4>
+  <h4>Treats associated with this flavor:</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Flavor.FlavorType</li>
+    <li>@join.Treat.TreatName</li>
     @using (Html.BeginForm("DeleteTreat", "Flavors"))
     {
       @Html.Hidden("joinId", @join.TreatFlavorId)
@@ -28,8 +28,8 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</p>
+<p>Assign a treat to this flavor @Html.ActionLink("here", "AddTreat", new { id = Model.FlavorId })</p>
 
 <p>@Html.ActionLink("Back to all flavors", "Index")</p>
 <p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
-<p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
