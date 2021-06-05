@@ -62,34 +62,34 @@ namespace PierresMarket.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    // [AllowAnonymous]
-    // public ActionResult Details(int id)
-    // {
-    //   var thisTreat = _db.Treats
-    //       .Include(treat => treat.JoinEntities)
-    //       .ThenInclude(join => join.Flavor)
-    //       .FirstOrDefault(treat => treat.TreatId == id);
-    //   return View(thisTreat);
-    // }
+    [AllowAnonymous]
+    public ActionResult Details(int id)
+    {
+      var thisFlavor = _db.Flavors
+          .Include(flavor => flavor.JoinEntities)
+          .ThenInclude(join => join.Treat)
+          .FirstOrDefault(flavor => flavor.FlavorId == id);
+      return View(thisFlavor);
+    }
 
-    // public ActionResult Edit(int id)
-    // {
-    //   var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-    //   ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorType");
-    //   return View(thisTreat);
-    // }
+    public ActionResult Edit(int id)
+    {
+      var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
+      return View(thisFlavor);
+    }
 
-    // [HttpPost]
-    // public ActionResult Edit(Treat treat, int FlavorId)
-    // {
-    //   if (FlavorId != 0)
-    //   {
-    //     _db.TreatFlavor.Add(new TreatFlavor() { FlavorId = FlavorId, TreatId = treat.TreatId });
-    //   }
-    //   _db.Entry(treat).State = EntityState.Modified;
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public ActionResult Edit(Flavor flavor, int TreatId)
+    {
+      if (TreatId != 0)
+      {
+        _db.TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
+      }
+      _db.Entry(flavor).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
     // public ActionResult AddFlavor(int id)
     // {
