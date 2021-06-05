@@ -1,18 +1,14 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
-@model ToDoList.Models.Item
+@model PierresMarket.Models.Flavor
 
-<h4>Add a new item</h4>
-
+<h4>Add a new Flavor</h4>
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.Description)
-    @Html.TextBoxFor(model => model.Description)
-
-    <p>@Html.Label("Select category"): @Html.DropDownList("CategoryId")</p>
-
-    <input type="submit" value="Add new item" class="btn btn-default" />
+  <p>Flavor Type: @Html.TextBoxFor(model => model.FlavorType, new {@class = "form-control", type="text", required="text"})</p>
+  
+  <input type="submit" value="Add new flavor" />
 }
-<p>@Html.ActionLink("Show all items", "Index")</p> *@
+<p>@Html.ActionLink("Show all treats", "Index")</p>
