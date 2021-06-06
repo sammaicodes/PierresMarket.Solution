@@ -41,8 +41,17 @@ input{
 body {
   margin-bottom: 60px;
   min-height: 90vh;
-  background: url("https://www.refinedguy.com/wp-content/uploads/2017/04/Tamagotchi.jpg");
+  /* background: url(""); */
 }
 #titl{
   text-align: center;
 } 
+.sizeNow{
+  border-width: 3px;
+  padding: 20px;
+  width: 300px;
+
+  margin: 0px 0px 25px 0px;
+  overflow: scroll;
+  max-height: 500px;
+}
