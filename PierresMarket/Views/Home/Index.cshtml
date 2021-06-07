@@ -6,7 +6,23 @@
 
 <h1>Welcome!</h1>
 
-<div class="container-fluid">
+<div class="aligN">
+  <div class="border border-warning">
+
+    <p>@Html.ActionLink("See All Flavors", "Index", "Flavors")</p> 
+    <p>@Html.ActionLink("See all Treats", "Index", "Treats")</p>
+    <p>@Html.ActionLink("Create an account", "Index", "Account")</p>
+    <div class="backg">
+      @using (Html.BeginForm("LogOff", "Account"))
+        {
+            <input type="submit" class="btn btn-warning" value="Log out" />
+        }
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid cn">
 <div class="col-md-6">
 
 <div class="row sizeNow">
@@ -43,13 +59,3 @@
 </div>
 
 
-
-
-<p>@Html.ActionLink("See All Flavors", "Index", "Flavors")</p> 
-<p>@Html.ActionLink("See all Treats", "Index", "Treats")</p>
-<p>@Html.ActionLink("Create an account", "Index", "Account")</p>
-
-  @using (Html.BeginForm("LogOff", "Account"))
-    {
-        <input type="submit" class="btn btn-default" value="Log out" />
-    }

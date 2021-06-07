@@ -9,12 +9,16 @@
 
 @if (Model.Any())
 {
-  <ul>
-    @foreach (Flavor flavor in Model)
-    {
-      <li>@Html.ActionLink($"{flavor.FlavorType}", "Details", new { id = flavor.FlavorId })</li>
-    }
-  </ul>
+  <div class="aligN">
+    <div class="border border-warning">
+      <ul>
+        @foreach (Flavor flavor in Model)
+        {
+          <li>@Html.ActionLink($"{flavor.FlavorType}", "Details", new { id = flavor.FlavorId })</li>
+        }
+      </ul>
+    </div>
+  </div>
 } 
 else
 {

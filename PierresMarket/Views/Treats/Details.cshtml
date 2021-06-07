@@ -15,17 +15,21 @@
 else
 {
   <h4>Flavors associated with @Html.DisplayFor(model => model.TreatName):</h4>
-  <ul>
-  @foreach(var join in Model.JoinEntities)
-  {
-    <li>@join.Flavor.FlavorType</li>
-    @using (Html.BeginForm("DeleteFlavor", "Treats"))
-    {
-      @Html.Hidden("joinId", @join.TreatFlavorId)
-      <input type="submit" value="Delete"/>
-    }
-  }
-  </ul>
+   <div class="aligN">
+    <div class="border border-warning">
+      <ul>
+      @foreach(var join in Model.JoinEntities)
+      {
+        <li>@join.Flavor.FlavorType</li>
+        @using (Html.BeginForm("DeleteFlavor", "Treats"))
+        {
+          @Html.Hidden("joinId", @join.TreatFlavorId)
+          <input type="submit" value="Delete"/>
+        }
+      }
+      </ul>
+    </div>
+   </div>
 }
 
 <p>@Html.ActionLink("Add a Flavor", "AddFlavor", new { id = Model.TreatId })</p>

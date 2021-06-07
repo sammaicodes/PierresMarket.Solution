@@ -11,7 +11,9 @@
   <p>Hello @User.Identity.Name! </p>
   @using (Html.BeginForm("LogOff", "Account"))
   {
-    <input type="submit" class="btn btn-default" value="Log out" />
+    <div class="backg">
+        <input type="submit" class="btn btn-warning" value="Log out" />
+    </div> 
   }
   <p>@Html.ActionLink("Home", "Index", "Home")</p>
 }
